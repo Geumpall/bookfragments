@@ -1,0 +1,538 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden; /* 가로 스크롤 제거 */
+    overflow-y: auto; /* 세로 스크롤 자동 */
+    width: 100%;
+    height: 100%;
+}
+
+#loadingMobile{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease-out; /* 트랜지션 추가 */
+}
+
+.logo_loading_mobile{
+    margin: auto;
+    margin-top: 14rem;
+    width: 50%;
+    height: auto;
+}
+
+.leftBox {
+    width: calc(100% - 40rem);
+    height: fit-content;
+    flex: 1;
+}
+
+.rightBox {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40rem;
+    background: linear-gradient(90deg, var(--color, black) 0%, rgba(255,255,255,0) 10%, rgba(255,255,255,0) 100%);
+    overflow-y: auto;
+    padding: 2rem 2.3rem 0 6rem;
+    z-index: 1001;
+}
+
+#logo-holder-mobile {
+    display: block;
+    margin: 4rem auto 0;
+    height: 21rem;
+    width: auto;
+    position: relative;
+    z-index: 80;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.6rem 40px;
+    width: calc(100% - 40rem);
+    position: fixed;
+    top: 0;
+    background: linear-gradient(180deg, rgb(255, 255, 255) 20%, rgba(255,255,255,0) 100%);
+    z-index: 2;
+}
+
+.header_mobile {
+    display: flex;
+    bottom: 0;
+    padding: 0;
+    width: 100vw;
+    position: fixed !important;
+    background: linear-gradient(360deg, rgb(255, 255, 255) 20%, rgba(255,255,255,0) 100%);
+    z-index: 100;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 40rem;
+}
+
+.menu_mobile {
+    width: 100vw;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.categoryButton {
+    width: calc(100% / 5.8);
+    height: fit-content;
+    color: white;
+    text-align: center;
+    word-break: keep-all;
+    font-size: 2.3rem;
+    padding: 1rem;
+    padding-top: 1.4rem;
+    margin: 0 0.3rem;
+    background-color: rgb(206, 206, 206);
+    cursor: pointer;
+    font-family: "dx-hfl-std", sans-serif;
+    font-weight: 500;
+    font-style: normal; 
+}
+
+.categoryButton:first-child {
+    margin-left: 0;
+}
+
+.category1 { background-color: red; }
+.category2 { background-color: blue; }
+.category3 { background-color: green; }
+.category4 { background-color: orange; }
+
+#searchInputDesktop {
+    display: block;
+    width: 50%;
+    height: 3rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-width: 0px 0px 3px 0px;
+    border-style: solid black;
+    margin-top: 0.6rem;
+}
+
+.dropfragment {
+    font-size: 1.9rem;
+    min-width: 127px;
+    height: 8.1rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    background-color: white;
+    filter: drop-shadow(black 0.1rem 0.1rem 6px);
+    text-align: center;
+    cursor: pointer;
+    font-family: "dx-hfl-std", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    word-break: keep-all;
+    text-decoration: none;
+    color: black;
+    margin-left: auto;
+}
+
+.dropfragment_mobile {
+    display: flex;
+    position: fixed;
+    right: 1rem;
+    bottom: 8.3rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.9rem;
+    line-height: 1.8rem;
+    background-color: white;
+    filter: drop-shadow(black 0.1rem 0.1rem 6px);
+    padding-top: 0.6rem;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: "dx-hfl-std", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    word-break: keep-all;
+    text-decoration: none;
+    color: black;
+    z-index: 7000;
+    transition: transform 0.2s ease-in-out; /* 크기 변경 애니메이션 */
+    transform-origin: right bottom; /* 우측 하단 모서리를 고정점으로 설정 */
+}
+
+.dropfragment_mobile.grow {
+    transform: scale(1.5); /* 커지는 애니메이션 */
+    transition: transform 0.3s ease-in-out; /* 애니메이션 지속시간 변경 */
+}
+
+.fragments {
+    margin: 15rem 0.7rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 6rem;
+    z-index: 1;
+    flex: 1;
+}
+
+.word {
+    margin: 0 1.2rem 1rem 1.9rem;
+    color: var(--color, black);
+    cursor: pointer;
+    font-family: "dx-hfl-std", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    word-spacing: -0.3rem;
+}
+
+.word::before, .word::after, .word .dot-bottom-left, .word .dot-bottom-right {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color, black);
+}
+
+.word::before { top: -4px; left: -4px; }
+.word::after { top: -4px; right: -4px; }
+.word .dot-bottom-left { bottom: 13px; left: -4px; }
+.word .dot-bottom-right { bottom: 13px; right: -4px; }
+
+.word:hover::before, .word:hover::after, .word:hover .dot-bottom-left, .word:hover .dot-bottom-right {
+    width: 16px;
+    height: 16px;
+
+}
+
+.word:hover::before{top: -12px; left:-12px; transition: 80ms ease-in;}
+.word:hover::after{top: -12px; right: -12px; transition: 80ms ease-in;}
+.word:hover .dot-bottom-left{bottom: 0px; left: -12px; transition: 80ms ease-in;}
+.word:hover .dot-bottom-right{bottom: 0px; right: -12px; transition: 80ms ease-in;}
+
+.wrapper {
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 170px;
+}
+
+#footer {
+    margin-top: 1rem;
+    display: flex;
+    height: 170px;
+    position: relative;
+    transform: translateY(-100%);
+    justify-content: space-between;
+}
+
+#bookInfo {
+    width: 22rem;
+    position: relative;
+    margin-right: 2rem;
+}
+
+.logo-holder {
+    position: relative;
+    width: 10rem;
+    margin-bottom: 2rem;
+    margin-right: 0;
+    right: 0;
+}
+
+.bookText {
+    font-size: 1.2rem;
+    line-height: 2.6rem;
+    font-family: agchoijeongho-screen, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    word-break: keep-all;
+}
+
+.authorText {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    font-family: "dx-hfl-std", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.titleText {
+    font-size: 2.2rem;
+    line-height: 1.8rem;
+    margin-bottom: 0.4rem;
+    font-family: "dx-hfl-std", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.publisherText {
+    font-size: 1.6rem;
+    line-height: 1.2rem;
+    margin-bottom: 1rem;
+    font-family: "dx-hfl-std", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+@media only screen and (min-width: 685px) {
+    #logo-holder-mobile { display: none; }
+    .header_mobile{display: none;}
+    .dropfragment_mobile{display: none;}
+}
+
+@media only screen and (max-width: 1360px) {
+    
+    .fragments { font-size: 4.9rem; }
+    .rightBox { width: 36rem; }
+    .categoryButton{font-size: 2rem;}
+
+    .word::before, .word::after, .word .dot-bottom-left, .word .dot-bottom-right {
+        content: '';
+        width: 10px;
+        height: 10px;
+    }
+
+    .word .dot-bottom-left { bottom: 10px; left: -4px; }
+    .word .dot-bottom-right { bottom: 10px; right: -4px; }
+
+    .word:hover::before, .word:hover::after, .word:hover .dot-bottom-left, .word:hover .dot-bottom-right {
+    width: 12px;
+    height: 12px;
+}
+
+    .leftBox{width: calc(100% - 36rem);}
+    .header{width: calc(100% - 36rem);}
+}
+
+@media only screen and (max-width: 1247px) {
+    .rightBox {
+        display: none;
+        width: auto;
+        height: 70%;
+        max-height: 80%;
+        top: 20%;
+        left: 20%;
+        right: 20%;
+        bottom: auto;
+        padding: 0rem;
+        background-color: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .rightBox.active {
+        display: block;
+        position: fixed;
+        padding: 2rem 2rem 4rem 4rem;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+    }
+
+    .overlay.active { display: block; }
+    .bookText { font-size: 1.2rem; line-height: 2.3rem; word-break: keep-all;
+        text-align: left;}
+    #footer { height: 121px; }
+    .leftBox { width: 100vw; }
+    .fragments { font-size: 6rem; }
+    .header { width: 100vw; }
+}
+
+@media only screen and (max-width: 684px) {
+    .rightBox {
+        display: none;
+        width: auto;
+        height: 60%;
+        max-height: 80%;
+        top: 10%;
+        left: 14%;
+        right: 14%;
+        bottom: auto;
+        padding: 2rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .rightBox.active {
+        display: block;
+        position: fixed;
+        padding: 4rem 4rem 4rem 2rem;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+    }
+
+    .overlay.active { display: block; }
+    .header { display: none; }
+    .categoryButton { font-size: 1.8rem; margin: 0.4rem; margin-top: 0.5rem;}
+    .categoryButton:nth-child(5) { margin-right: 0; }
+    .menu_mobile{bottom: 2rem;}
+    #searchInputMobile{ width: 90%; height: 3rem; font-size: 1rem; border-width: 0px 0px 3px 0px;
+        border-style: solid black;}
+    #wholeContainer { overflow: visible; width: auto; }
+    .leftBox { width: 100vw; }
+    .bookText { font-size: 1.4rem; line-height: 2.6rem; word-break: keep-all;
+        text-align: left;}
+    .authorText{font-size: 1.2rem;}
+    .titleText{font-size: 1.4rem;}
+    .publisherText{font-size: 1.1rem;}
+    .dropfragment { display: none; }
+    .fragments { font-size: 6rem; width: 100vw; }
+    .word { margin-right: 1rem; }
+}
+
+@media only screen and (max-width: 420px) {
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .leftBox{
+        width: 100vw
+    }
+
+    .header_mobile{
+        min-width: 100%;
+        bottom: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu_mobile{
+        bottom: 1rem;
+        margin: 0;
+        padding: 0;
+        gap:0.36rem;
+        justify-content: center;
+        min-width: 100vw;
+    }
+
+    .categoryButton{
+        padding: 0.6rem 0.8rem;
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    #logo-holder-mobile{
+        display: none;
+        width: 60vw;
+        margin-top: 0;
+    }
+
+    .fragments{
+        margin-top: 1.4rem;
+        font-size: 3.2rem;
+        width: calc(100% - 0.8rem);
+        margin-bottom: 10rem;
+    }
+
+    .word{
+        margin-left: 0.7rem;
+    }
+
+    .rightBox {
+        display: none;
+        width: auto;
+        height: 60%;
+        max-height: 80%;
+        top: 10%;
+        left: 8%;
+        right: 8%;
+        bottom: auto;
+        padding: 0rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .rightBox.active {
+        display: block;
+        position: fixed;
+        padding: 1rem 2rem 2rem 2rem;
+    }
+
+    .logo-holder{
+        //display: none;
+        width: 4rem;
+    }
+
+    .bookText{
+        font-size: 1rem;
+        line-height: 1.9rem;
+        word-break: break-all;
+        text-align: justify;
+    }
+
+    #searchInputMobile {
+        width: 90%;
+        height: 3rem;
+        padding: 0;
+        font-size: 1.2rem;
+        border-width: 0px 0px 3px 0px;
+        border-style: solid black;
+        margin-top: 2px;
+    }
+
+    .wrapper{
+        padding-bottom: 80px;
+    }
+
+    #footer{transform: translateY(-90%); height: 80px;}
+
+    #bookInfo{
+        margin: 0;
+    }
+
+    .authorText{font-size: 1.2rem;}
+    .titleText{font-size: 1.4rem; line-height: 1rem;}
+    .publisherText{font-size: 1.1rem; line-height: 1.6rem;}
+
+    .word::before, .word::after, .word .dot-bottom-left, .word .dot-bottom-right {
+        content: '';
+        width: 7px;
+        height: 7px;
+    }
+
+    .word .dot-bottom-left { bottom: 4px; left: -4px; }
+    .word .dot-bottom-right { bottom: 4px; right: -4px; }
+
+    .word:hover::before, .word:hover::after, .word:hover .dot-bottom-left, .word:hover .dot-bottom-right {
+    width: 10px;
+    height: 10px;
+}
+}
