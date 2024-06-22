@@ -138,6 +138,12 @@ html, body {
   background-color: orange;
 }
 
+.categoryButton:hover {
+  transform: scale(1.2);
+  transition: 500ms;
+  z-index: 700;
+}
+
 #searchInputDesktop {
   display: block;
   width: 50%;
