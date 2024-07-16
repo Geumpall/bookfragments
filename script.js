@@ -260,3 +260,4 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('dropfragment_mobile 요소가 존재하지 않습니다.');
 }
 });
+

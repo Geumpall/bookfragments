@@ -543,3 +543,10 @@ html, body {
     height: 10px;
 }
 }
+
+.new-corsur {
+    cursor{
+        background-color: white;
+        filter: drop-shadow(red 0rem 0rem 8px);
+    }
+}
